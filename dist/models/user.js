@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
 var UserSchema = new mongoose_1.default.Schema({
     name: String,
-    DOB: Date.now,
+    DOB: Date,
     email: String,
     password: String,
 });

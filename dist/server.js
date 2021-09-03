@@ -6,10 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var post_1 = __importDefault(require("./routes/post"));
+var order_1 = __importDefault(require("./routes/order"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var app = (0, express_1.default)();
 dotenv_1.default.config();
+// middleware:
+app.use(express_1.default.json());
 app.use("/posts", post_1.default);
+app.use("/order", order_1.default);
 app.get("/", function (req, res) {
     res.send("hi");
 });

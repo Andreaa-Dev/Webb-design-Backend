@@ -7,9 +7,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var PostSchema = new mongoose_1.default.Schema({
     name: String,
     address: String,
-    date: Date.now,
-    description: {
-        type: String,
-    },
+    date: Date,
+    description: String,
 });
 exports.default = mongoose_1.default.model("Post", PostSchema);
