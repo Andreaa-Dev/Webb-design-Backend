@@ -7,6 +7,8 @@ var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var post_1 = __importDefault(require("./routes/post"));
 var order_1 = __importDefault(require("./routes/order"));
+var product_1 = __importDefault(require("./routes/product"));
+var user_1 = __importDefault(require("./routes/user"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var app = (0, express_1.default)();
 dotenv_1.default.config();
@@ -14,6 +16,8 @@ dotenv_1.default.config();
 app.use(express_1.default.json());
 app.use("/posts", post_1.default);
 app.use("/order", order_1.default);
+app.use("/product", product_1.default);
+app.use("/user", user_1.default);
 app.get("/", function (req, res) {
     res.send("hi");
 });
@@ -21,8 +25,11 @@ app.get("/", function (req, res) {
     res.send("hello");
 });
 // connect to DB
-mongoose_1.default.connect(process.env.DB_CONNECTION, function () {
-    console.log("welcome");
-});
+mongoose_1.default
+    .connect(process.env.DB_CONNECTION)
+    .then(function () {
+    console.log("connected");
+    app.listen(5000);
+})
+    .catch(function (err) { return console.log("error in connection", err); });
 // listen to the server
-app.listen(5000);
