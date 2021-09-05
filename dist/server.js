@@ -9,11 +9,13 @@ var post_1 = __importDefault(require("./routes/post"));
 var order_1 = __importDefault(require("./routes/order"));
 var product_1 = __importDefault(require("./routes/product"));
 var user_1 = __importDefault(require("./routes/user"));
+var cors_1 = __importDefault(require("cors"));
 var dotenv_1 = __importDefault(require("dotenv"));
 var app = (0, express_1.default)();
 dotenv_1.default.config();
 // middleware:
 app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 app.use("/posts", post_1.default);
 app.use("/order", order_1.default);
 app.use("/product", product_1.default);

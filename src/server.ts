@@ -4,6 +4,7 @@ import postRouter from "./routes/post";
 import orderRouter from "./routes/order";
 import productRouter from "./routes/product";
 import userRouter from "./routes/user";
+import cors from "cors";
 
 import dotenv from "dotenv";
 
@@ -12,6 +13,7 @@ dotenv.config();
 
 // middleware:
 app.use(express.json());
+app.use(cors());
 app.use("/posts", postRouter);
 app.use("/order", orderRouter);
 app.use("/product", productRouter);
