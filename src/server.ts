@@ -1,12 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
+
+import dotenv from "dotenv";
+import cors from "cors";
+
 import postRouter from "./routes/post";
 import orderRouter from "./routes/order";
 import productRouter from "./routes/product";
 import userRouter from "./routes/user";
-import cors from "cors";
-
-import dotenv from "dotenv";
+import authRouter from "./auth/auth";
 
 const app = express();
 dotenv.config();
@@ -18,6 +20,7 @@ app.use("/posts", postRouter);
 app.use("/order", orderRouter);
 app.use("/product", productRouter);
 app.use("/user", userRouter);
+app.use("/register", authRouter);
 
 app.get("/", (req, res) => {
   res.send("hi");

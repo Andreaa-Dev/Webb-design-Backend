@@ -1,7 +1,6 @@
 import express from "express";
 const router = express.Router();
 import UserModel from "../models/user";
-import moment from "moment";
 
 // client make request - sent data
 router.get("/", (req, res) => {
@@ -10,9 +9,6 @@ router.get("/", (req, res) => {
 
 // create data
 router.post("/", async (req, res) => {
-  console.log("req", req.body);
-  //   const formatDate = moment(req.body.date).format("dd/mm/yyyy");
-  //   console.log("format", formatDate);
   const user = new UserModel({
     name: req.body.name,
     DOB: req.body.date,

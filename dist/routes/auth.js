@@ -40,30 +40,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var joi_1 = __importDefault(require("@hapi/joi"));
+// Validation
+var schema = {
+    name: joi_1.default.string().min(6),
+    email: joi_1.default.string().min(6).email(),
+    password: joi_1.default.string.min(6),
+};
 var router = express_1.default.Router();
-var user_1 = __importDefault(require("../models/user"));
-// client make request - sent data
-router.get("/", function (req, res) {
-    res.send("user here");
-});
-// create data
-router.post("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var user, savedUser;
+router.post("/register", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var validation;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                user = new user_1.default({
-                    name: req.body.name,
-                    DOB: req.body.date,
-                    email: req.body.email,
-                    password: req.body.password,
-                });
-                return [4 /*yield*/, user.save()];
-            case 1:
-                savedUser = _a.sent();
-                res.json(savedUser);
-                return [2 /*return*/];
-        }
+        validation = joi_1.default.validate(req.body, schema);
+        res.send(validation);
+        return [2 /*return*/];
     });
 }); });
 exports.default = router;
