@@ -11,7 +11,7 @@ var post_1 = __importDefault(require("./routes/post"));
 var order_1 = __importDefault(require("./routes/order"));
 var product_1 = __importDefault(require("./routes/product"));
 var user_1 = __importDefault(require("./routes/user"));
-var auth_1 = __importDefault(require("./routes/auth"));
+var auth_1 = __importDefault(require("./auth/auth"));
 var app = (0, express_1.default)();
 dotenv_1.default.config();
 // middleware:
